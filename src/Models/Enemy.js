@@ -7,7 +7,7 @@ export class Enemy {
   enemyImagePath = "./src/gifs/michaelJackson.gif";
   position = 110;
 
-  enemySpawn() {
+  spawnEnemy() {
     this.body.innerHTML += `<img src="${this.enemyImagePath}" alt="enemy" class="enemy" />`;
     this.moveEnemy();
   }
@@ -18,7 +18,7 @@ export class Enemy {
       this.position -= 1;
       /* if (this.position < -110) {
         this.destroyEnemy();
-        this.enemySpawn();
+        this.spawnEnemy();
       } */
       enemyRendered.style.marginLeft = `${this.position}vw`;
     }, 5);
@@ -30,7 +30,7 @@ export class Enemy {
     const enemyRendered = document.querySelector(".enemy");
     enemyRendered.remove();
     setTimeout(() => {
-      this.enemySpawn();
+      this.spawnEnemy();
     }, 500);
   }
 }

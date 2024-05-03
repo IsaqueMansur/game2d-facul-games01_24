@@ -5,7 +5,7 @@ function startGame() {
   const BackGroundInstance = new Background();
   const EnemyInstance = new Enemy();
   BackGroundInstance.backgroundSpawn();
-  EnemyInstance.enemySpawn();
+  EnemyInstance.spawnEnemy();
 }
 
 startGame();
