@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.background {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  filter: brightness(1.5);
+}
+
+.ground {
+  position: absolute;
+  width: 100vw;
+  height: 32vh;
+  background-color: rgb(245, 245, 245);
+  bottom: 0;
+}
+
+.enemy {
+  position: absolute;
+  margin-left: 110vw;
+  margin-top: 33vh;
+  z-index: 1;
+  width: 15vw;
+  height: 15vw;
+  /*   filter: brightness(0.5); */
+}
