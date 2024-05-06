@@ -24,12 +24,20 @@ body {
   bottom: 0;
 }
 
-.enemy {
+#enemy {
   position: absolute;
-  margin-left: 110vw;
-  margin-top: 33vh;
   z-index: 1;
-  width: 15vw;
-  height: 15vw;
-  /*   filter: brightness(0.5); */
+  width: 12vw;
+  height: 10vh;
+  opacity: 0.2;
+  margin-top: 33vh;
+  margin-left: 110vw;
+}
+
+#player {
+  position: absolute;
+  opacity: 0.05;
+  z-index: 1;
+  width: 12vw;
+  height: 12vh;
 }
