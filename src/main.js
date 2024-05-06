@@ -1,6 +1,7 @@
 import { Background } from "./Models/Background.js";
 import { Coin } from "./Models/Coin.js";
 import { Enemy } from "./Models/Enemy.js";
+import { GameOver } from "./Models/GameOver.js";
 import { Parallax } from "./Models/Parallax.js";
 import { Player } from "./Models/Player.js";
 import { Score } from "./Models/Score.js";
@@ -32,7 +33,8 @@ function calculateColisionWithEnemy() {
     horizontalDifference > -2 &&
     PlayerInstance.verticalPosition > 15
   ) {
-    console.log("colisão");
+    const gameOverInstance = new GameOver(ScoreInstance.scorePlayer);
+    gameOverInstance.gameOver();
   }
 }
 
@@ -41,9 +43,9 @@ function calculateColisionWithCoin() {
     PlayerInstance.horizontalPosition - CoinInstance.horizontalLocalization;
 
   if (
-    horizontalDifference < 2 &&
-    horizontalDifference > -2 &&
-    PlayerInstance.verticalPosition < 20
+    horizontalDifference < 3 &&
+    horizontalDifference > -3 &&
+    PlayerInstance.verticalPosition < 30
   ) {
     ScoreInstance.incrementScore();
     CoinInstance.spawnCoin();
@@ -55,8 +57,8 @@ function startGame() {
   ScoreInstance.scoreSpawn();
   EnemyInstance.spawnEnemy();
   PlayerInstance.spawnPlayer();
-  ParallaxInstance.buildingsSpawn();
   CoinInstance.spawnCoin();
+  ParallaxInstance.buildingsSpawn();
 
   setInterval(() => {
     calculateColisionWithEnemy();
