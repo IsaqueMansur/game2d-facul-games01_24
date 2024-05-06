@@ -1,5 +1,6 @@
 import { Background } from "./Models/Background.js";
 import { Enemy } from "./Models/Enemy.js";
+import { Parallax } from "./Models/Parallax.js";
 import { Player } from "./Models/Player.js";
 import { Score } from "./Models/Score.js";
 
@@ -9,6 +10,7 @@ const PlayerInstance = new Player();
 const BackGroundInstance = new Background();
 const EnemyInstance = new Enemy();
 const ScoreInstance = new Score();
+const ParallaxInstance = new Parallax();
 
 document.addEventListener("keydown", (event) => {
   if (!keysPresseds.includes(event.key)) keysPresseds.push(event.key);
@@ -37,6 +39,7 @@ function startGame() {
   ScoreInstance.scoreSpawn();
   EnemyInstance.spawnEnemy();
   PlayerInstance.spawnPlayer();
+  ParallaxInstance.buildingsSpawn();
   setInterval(() => {
     calculateColision();
   }, 50);
