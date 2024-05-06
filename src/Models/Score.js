@@ -6,9 +6,14 @@ export class Score {
   }
 
   incrementScore() {
+    const captureCoinAudio = new Audio("./src/sounds/captureCoin.mp3");
     this.scorePlayer++;
     document.getElementById(
       "score"
     ).innerHTML = `Pontuação: ${this.scorePlayer}`;
+    captureCoinAudio.play();
+    setTimeout(() => {
+      captureCoinAudio.pause();
+    }, 500);
   }
 }
