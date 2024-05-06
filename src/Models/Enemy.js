@@ -3,7 +3,7 @@ export class Enemy {
     this.enemyInterval = null;
   }
 
-  body = document.querySelector("body");
+  body = document.body;
   enemyImagePath = "./src/gifs/michaelJackson.gif";
   position = 110;
 

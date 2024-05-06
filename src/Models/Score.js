@@ -1,5 +1,5 @@
 export class Score {
-  body = document.querySelector("body");
+  body = document.body;
   scorePlayer = 0;
   scoreSpawn() {
     this.body.innerHTML += `<span id="score">Pontuação: ${this.scorePlayer}</span>`;

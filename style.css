@@ -65,3 +65,11 @@ body {
   margin-bottom: 30vh;
   position: absolute;
 }
+
+#coin {
+  position: absolute;
+  opacity: 01;
+  width: 2vw;
+  height: 2vh;
+  margin-top: 20vh;
+}

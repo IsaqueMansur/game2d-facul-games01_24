@@ -3,7 +3,7 @@ export class Player {
     this.playerInterval = null;
   }
 
-  body = document.querySelector("body");
+  body = document.body;
   playerImagePath = "./src/gifs/player.gif";
   horizontalPosition = -90;
   verticalPosition = 33;

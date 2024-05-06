@@ -1,4 +1,5 @@
 import { Background } from "./Models/Background.js";
+import { Coin } from "./Models/Coin.js";
 import { Enemy } from "./Models/Enemy.js";
 import { Parallax } from "./Models/Parallax.js";
 import { Player } from "./Models/Player.js";
@@ -11,6 +12,7 @@ const BackGroundInstance = new Background();
 const EnemyInstance = new Enemy();
 const ScoreInstance = new Score();
 const ParallaxInstance = new Parallax();
+const CoinInstance = new Coin();
 
 document.addEventListener("keydown", (event) => {
   if (!keysPresseds.includes(event.key)) keysPresseds.push(event.key);
@@ -21,7 +23,7 @@ document.addEventListener("keyup", (event) => {
   PlayerInstance.animationPlayer(keysPresseds);
 });
 
-function calculateColision() {
+function calculateColisionWithEnemy() {
   const horizontalDifference =
     PlayerInstance.horizontalPosition - EnemyInstance.position;
 
@@ -34,15 +36,36 @@ function calculateColision() {
   }
 }
 
+function calculateColisionWithCoin() {
+  const horizontalDifference =
+    PlayerInstance.horizontalPosition - CoinInstance.horizontalLocalization;
+
+  if (
+    horizontalDifference < 2 &&
+    horizontalDifference > -2 &&
+    PlayerInstance.verticalPosition < 20
+  ) {
+    ScoreInstance.incrementScore();
+    CoinInstance.spawnCoin();
+  }
+}
+
 function startGame() {
   /*   BackGroundInstance.backgroundSpawn(); */
   ScoreInstance.scoreSpawn();
   EnemyInstance.spawnEnemy();
   PlayerInstance.spawnPlayer();
   ParallaxInstance.buildingsSpawn();
+  CoinInstance.spawnCoin();
+
   setInterval(() => {
-    calculateColision();
+    calculateColisionWithEnemy();
+    calculateColisionWithCoin();
   }, 50);
+
+  setInterval(() => {
+    CoinInstance.spawnCoin();
+  }, 20000);
 }
 
 startGame();

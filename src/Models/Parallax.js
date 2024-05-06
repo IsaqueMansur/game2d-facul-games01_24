@@ -1,5 +1,5 @@
 export class Parallax {
-  body = document.querySelector("body");
+  body = document.body;
   buildingsPath = "./src/images/buildings.png";
   positionBuildings1 = 0;
   positionBuildings2 = 200;
