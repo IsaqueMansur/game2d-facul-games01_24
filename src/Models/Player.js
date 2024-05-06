@@ -27,7 +27,7 @@ export class Player {
         clearInterval(intervalJump);
         this.fallPlayer();
       }
-    }, 10);
+    }, 15);
   }
 
   fallPlayer() {
@@ -56,7 +56,7 @@ export class Player {
     renderedPlayer.style.marginLeft = `${this.horizontalPosition}vw`;
   }
 
-  movePlayer(keysPresseds) {
+  animationPlayer(keysPresseds) {
     if (keysPresseds.includes("a") || keysPresseds.includes("d")) {
       if (!this.playerRunning) {
         this.intervalPlayerRunning = setInterval(() => {

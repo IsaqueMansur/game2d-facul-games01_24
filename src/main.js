@@ -12,11 +12,11 @@ const ScoreInstance = new Score();
 
 document.addEventListener("keydown", (event) => {
   if (!keysPresseds.includes(event.key)) keysPresseds.push(event.key);
-  PlayerInstance.movePlayer(keysPresseds);
+  PlayerInstance.animationPlayer(keysPresseds);
 });
 document.addEventListener("keyup", (event) => {
   keysPresseds.pop(event.key);
-  PlayerInstance.movePlayer(keysPresseds);
+  PlayerInstance.animationPlayer(keysPresseds);
 });
 
 function calculateColision() {
@@ -26,11 +26,10 @@ function calculateColision() {
   if (
     horizontalDifference < 2 &&
     horizontalDifference > -2 &&
-    PlayerInstance.verticalPosition > 25
+    PlayerInstance.verticalPosition > 15
   ) {
-    alert("colisão");
+    console.log("colisão");
   }
-  console.log(horizontalDifference);
 }
 
 function startGame() {

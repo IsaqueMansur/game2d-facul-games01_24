@@ -29,14 +29,14 @@ body {
   z-index: 1;
   width: 12vw;
   height: 10vh;
-  opacity: 0.2;
+  opacity: 0.03;
   margin-top: 33vh;
   margin-left: 110vw;
 }
 
 #player {
   position: absolute;
-  opacity: 0.05;
+  opacity: 0.03;
   z-index: 1;
   width: 12vw;
   height: 12vh;
