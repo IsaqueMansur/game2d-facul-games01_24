@@ -1,18 +1,25 @@
 export class Coin {
   body = document.body;
   coinImgPath = "./src/images/coin.png";
-  horizontalLocalization;
-
+  positionCoin = 100;
+  intervalCoin;
   spawnCoin() {
+    if (this.intervalCoin) {
+      clearInterval(this.intervalCoin);
+    }
+    this.positionCoin = 100;
     if (document.getElementById("coin")) {
-      this.horizontalLocalization = Math.floor(Math.random() * 90) + 1;
-      console.log(this.horizontalLocalization);
       document.getElementById(
         "coin"
-      ).style.marginLeft = `${this.horizontalLocalization}vw`;
+      ).style.marginLeft = `100vw`;
     } else {
-      this.horizontalLocalization = Math.floor(Math.random() * 90) + 1;
-      this.body.innerHTML += `<img src="${this.coinImgPath}" alt="coin" id="coin" style="margin-left: ${this.horizontalLocalization}vw" />`;
+      this.body.innerHTML += `<img src="${this.coinImgPath}" alt="coin" id="coin" style="margin-left: ${this.positionCoin}vw" />`;      
     }
+    this.intervalCoin = setInterval(() => {
+      const coin = document.getElementById("coin");
+      this.positionCoin -= 1;
+      if (this.positionCoin === -100) this.spawnCoin();
+      coin.style.marginLeft = `${this.positionCoin}vw`;
+    }, 10)
   }
 }

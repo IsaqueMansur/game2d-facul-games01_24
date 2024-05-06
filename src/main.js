@@ -40,8 +40,7 @@ function calculateColisionWithEnemy() {
 
 function calculateColisionWithCoin() {
   const horizontalDifference =
-    PlayerInstance.horizontalPosition - CoinInstance.horizontalLocalization;
-
+    PlayerInstance.horizontalPosition - CoinInstance.positionCoin;
   if (
     horizontalDifference < 3 &&
     horizontalDifference > -3 &&
@@ -55,7 +54,7 @@ function calculateColisionWithCoin() {
 function startGame() {
   /*   BackGroundInstance.backgroundSpawn(); */
   ScoreInstance.scoreSpawn();
-  EnemyInstance.spawnEnemy();
+  EnemyInstance.spawnEnemy(ScoreInstance);
   PlayerInstance.spawnPlayer();
   CoinInstance.spawnCoin();
   ParallaxInstance.buildingsSpawn();

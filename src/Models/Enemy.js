@@ -7,22 +7,23 @@ export class Enemy {
   enemyImagePath = "./src/gifs/michaelJackson.gif";
   position = 110;
 
-  spawnEnemy() {
+  spawnEnemy(ScoreInstance) {
     this.body.innerHTML += `<img src="${this.enemyImagePath}" alt="enemy" id="enemy" />`;
     setTimeout(() => {
-      this.moveEnemy();
-    }, 500);
+      this.moveEnemy(ScoreInstance);
+    }, 300);
   }
 
-  moveEnemy() {
+  moveEnemy(ScoreInstance) {
     const enemy = document.getElementById("enemy");
     this.enemyInterval = setInterval(() => {
       this.position -= 1;
       if (this.position < -110) {
+        ScoreInstance.incrementScore();
         this.position = 110;
       }
       enemy.style.marginLeft = `${this.position}vw`;
-    }, 50);
+    }, 30);
   }
 
   destroyEnemy() {

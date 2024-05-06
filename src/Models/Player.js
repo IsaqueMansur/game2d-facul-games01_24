@@ -49,7 +49,7 @@ export class Player {
         this.horizontalPosition -= 2;
       }
     } else {
-      if (this.horizontalPosition < 90) {
+      if (this.horizontalPosition < -60) {
         this.horizontalPosition += 2;
       }
     }
