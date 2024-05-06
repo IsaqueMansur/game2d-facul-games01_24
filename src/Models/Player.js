@@ -8,21 +8,21 @@ export class Player {
   horizontalPosition = -90;
   verticalPosition = 33;
   playerRunning = false;
-  renderedPlayer;
   intervalPlayerRunning;
 
   spawnPlayer() {
     this.body.innerHTML += `<img src="${this.playerImagePath}" alt="player" id="player" />`;
-    this.renderedPlayer = document.getElementById("player");
-    this.renderedPlayer.style.marginTop = "33vh";
-    this.renderedPlayer.style.marginLeft = "-90vw";
+    const renderedPlayer = document.getElementById("player");
+    renderedPlayer.style.marginTop = "33vh";
+    renderedPlayer.style.marginLeft = "-90vw";
   }
 
   jumpPlayer() {
+    const renderedPlayer = document.getElementById("player");
     if (this.verticalPosition !== 33) return;
     const intervalJump = setInterval(() => {
       this.verticalPosition -= 1;
-      this.renderedPlayer.style.marginTop = `${this.verticalPosition}vh`;
+      renderedPlayer.style.marginTop = `${this.verticalPosition}vh`;
       if (this.verticalPosition === -5) {
         clearInterval(intervalJump);
         this.fallPlayer();
@@ -31,14 +31,16 @@ export class Player {
   }
 
   fallPlayer() {
+    const renderedPlayer = document.getElementById("player");
     const intervalFall = setInterval(() => {
       this.verticalPosition += 1;
-      this.renderedPlayer.style.marginTop = `${this.verticalPosition}vh`;
+      renderedPlayer.style.marginTop = `${this.verticalPosition}vh`;
       if (this.verticalPosition === 33) clearInterval(intervalFall);
     }, 10);
   }
 
   movimentHorizontalPlayer(keysPresseds) {
+    const renderedPlayer = document.getElementById("player");
     const indexA = keysPresseds.indexOf("a");
     const indexD = keysPresseds.indexOf("d");
 
@@ -51,8 +53,7 @@ export class Player {
         this.horizontalPosition += 2;
       }
     }
-    console.log(this.horizontalPosition);
-    this.renderedPlayer.style.marginLeft = `${this.horizontalPosition}vw`;
+    renderedPlayer.style.marginLeft = `${this.horizontalPosition}vw`;
   }
 
   movePlayer(keysPresseds) {
@@ -60,7 +61,7 @@ export class Player {
       if (!this.playerRunning) {
         this.intervalPlayerRunning = setInterval(() => {
           this.movimentHorizontalPlayer(keysPresseds);
-        }, 20);
+        }, 35);
       }
       this.playerRunning = true;
     } else {
@@ -70,15 +71,5 @@ export class Player {
     if (keysPresseds.includes("w")) {
       this.jumpPlayer();
     }
-  }
-
-  destroyPlayer() {
-    this.horizontalPosition = 110;
-    clearInterval(this.enemyInterval);
-    const enemyRendered = document.querySelectorAll(".enemy");
-    enemyRendered.remove();
-    setTimeout(() => {
-      this.spawnEnemy();
-    }, 500);
   }
 }
